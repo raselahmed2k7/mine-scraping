@@ -1,0 +1,2 @@
+class TicketSummary < ApplicationRecord
+end
