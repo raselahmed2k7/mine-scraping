@@ -2,60 +2,68 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_20_072941) do
+ActiveRecord::Schema.define(version: 2021_12_21_092555) do
 
-  create_table "airline_flights", force: :cascade do |t|
-    t.integer "ticket_airline_id"
-    t.string "flight_code"
-    t.float "flight_price"
-    t.string "flight_changeable_status"
-    t.string "flight_ticket_type"
-    t.integer "ticket_airline_company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ticket_airline_company_id"], name: "index_airline_flights_on_ticket_airline_company_id"
+  create_table "airlines", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "ticket_airline_companies", force: :cascade do |t|
-    t.integer "ticket_summary_id"
-    t.string "airline_company_name"
-    t.float "ticket_lowest_price"
-    t.integer "total_flights_available"
-    t.string "ticket_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "airports", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "ticket_summaries", force: :cascade do |t|
+  create_table "departure_dates", force: :cascade do |t|
     t.date "departure_date"
-    t.date "return_date"
-    t.string "time_from_out"
-    t.string "time_to_out"
-    t.datetime "search_time"
-    t.integer "total_tickets_out"
-    t.integer "total_tickets_in"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tickets_summaries", force: :cascade do |t|
-    t.date "departure_date"
-    t.date "return_date"
-    t.string "time_from_out"
-    t.string "time_to_out"
-    t.datetime "search_time"
-    t.integer "total_tickets_out"
-    t.integer "total_tickets_in"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "flights", force: :cascade do |t|
+    t.integer "search_id"
+    t.string "code"
+    t.float "price"
+    t.integer "flight_airline_id"
+    t.string "changeable_status"
+    t.string "flight_type"
+    t.float "flight_type_discount"
+    t.integer "airline_id"
+    t.integer "search_field_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["airline_id"], name: "index_flights_on_airline_id"
+    t.index ["search_field_id"], name: "index_flights_on_search_field_id"
   end
 
+  create_table "search_fields", force: :cascade do |t|
+    t.integer "departure_input_date_id"
+    t.datetime "search_date"
+    t.integer "departure_airport_id"
+    t.integer "arrival_airport_id"
+    t.string "departure_time_from"
+    t.string "departure_time_to"
+    t.integer "departure_date_id"
+    t.integer "airport_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["airport_id"], name: "index_search_fields_on_airport_id"
+    t.index ["departure_date_id"], name: "index_search_fields_on_departure_date_id"
+  end
+
+  add_foreign_key "flights", "airlines"
+  add_foreign_key "flights", "search_fields"
+  add_foreign_key "search_fields", "airports"
+  add_foreign_key "search_fields", "departure_dates"
 end
