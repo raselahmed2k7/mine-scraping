@@ -5,6 +5,7 @@ def airline_seeder
     'JAL',
     'Air Do',
     'スカイマーク',
+    'ジェットスター',
     'ソラシド',
     'スターフライヤー',
     'フジドリームエアラインズ',
@@ -20,4 +21,5 @@ def airline_seeder
     airline_list.each do |airline|
         Airline.create( name: airline)
     end
+
 end

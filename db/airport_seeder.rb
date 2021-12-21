@@ -86,7 +86,8 @@ def airport_seeder
         ['与那国空港', 'OGN']
     ]
     Airport.destroy_all
-    airport_lists.each do |airport|
-        Airport.create( name: airport)
+    airport_lists.each do |airport, code|
+        Airport.create( name: airport, code:code)
     end
+
 end
