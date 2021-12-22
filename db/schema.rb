@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_12_21_092555) do
     t.float "price"
     t.integer "flight_airline_id"
     t.string "changeable_status"
+    t.string "flight_seat"
     t.string "flight_type"
     t.float "flight_type_discount"
     t.integer "airline_id"
