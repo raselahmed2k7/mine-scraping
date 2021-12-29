@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
+gem 'passenger'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -67,9 +67,18 @@ gem 'pry'
 # Selenium web driver
 gem 'webdrivers', '~> 4.6'
 
-# Firfox adapter for selenium 
+# Firfox adapter for selenium
 gem 'geckodriver-helper', '~> 0.0.3'
 
 gem 'config', '~> 3.1'
 
 gem 'whenever', require: false
+
+
+# Capistrano
+group :development do
+  gem 'capistrano', '~> 3.11'
+  gem 'capistrano-rails', '~> 1.4'
+  gem 'capistrano-passenger', '~> 0.2.1'
+  gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+end
