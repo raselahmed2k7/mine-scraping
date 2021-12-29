@@ -5,8 +5,7 @@ ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1', '>= 6.1.4.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -73,6 +72,8 @@ gem 'geckodriver-helper', '~> 0.0.3'
 gem 'config', '~> 3.1'
 
 gem 'whenever', require: false
+
+gem 'mysql2'
 
 
 # Capistrano
