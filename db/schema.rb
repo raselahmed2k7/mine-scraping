@@ -32,26 +32,22 @@ ActiveRecord::Schema.define(version: 2021_12_21_092555) do
   end
 
   create_table "flights", force: :cascade do |t|
-    t.integer "search_id"
     t.string "code"
     t.float "price"
-    t.integer "flight_airline_id"
     t.string "changeable_status"
     t.string "flight_seat"
     t.string "flight_type"
     t.float "flight_type_discount"
     t.integer "airline_id"
-    t.integer "search_field_id"
+    t.integer "search_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["airline_id"], name: "index_flights_on_airline_id"
-    t.index ["search_field_id"], name: "index_flights_on_search_field_id"
+    t.index ["search_id"], name: "index_flights_on_search_id"
   end
 
-  create_table "search_fields", force: :cascade do |t|
-    t.integer "departure_input_date_id"
+  create_table "searches", force: :cascade do |t|
     t.datetime "search_date"
-    t.integer "departure_airport_id"
     t.integer "arrival_airport_id"
     t.string "departure_time_from"
     t.string "departure_time_to"
@@ -59,12 +55,12 @@ ActiveRecord::Schema.define(version: 2021_12_21_092555) do
     t.integer "airport_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["airport_id"], name: "index_search_fields_on_airport_id"
-    t.index ["departure_date_id"], name: "index_search_fields_on_departure_date_id"
+    t.index ["airport_id"], name: "index_searches_on_airport_id"
+    t.index ["departure_date_id"], name: "index_searches_on_departure_date_id"
   end
 
   add_foreign_key "flights", "airlines"
-  add_foreign_key "flights", "search_fields"
-  add_foreign_key "search_fields", "airports"
-  add_foreign_key "search_fields", "departure_dates"
+  add_foreign_key "flights", "searches"
+  add_foreign_key "searches", "airports"
+  add_foreign_key "searches", "departure_dates"
 end

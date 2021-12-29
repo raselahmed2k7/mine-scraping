@@ -64,5 +64,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # binding.pry
 gem 'pry'
 
+# Selenium web driver
 gem 'webdrivers', '~> 4.6'
+
+# Firfox adapter for selenium 
 gem 'geckodriver-helper', '~> 0.0.3'
+
+gem 'config', '~> 3.1'
+
+gem 'whenever', require: false

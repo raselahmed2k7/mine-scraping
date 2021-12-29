@@ -1,3 +1,3 @@
 class DepartureDate < ApplicationRecord
-    has_many :search_fields
+    has_many :searches
 end
