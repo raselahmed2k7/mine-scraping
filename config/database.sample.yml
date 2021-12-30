@@ -11,8 +11,8 @@ default: &default
   adapter: mysql2
   encoding: utf8
   database: flight_scraping
-  username: root
-  password: 
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   host: 127.0.0.1
   port: 3306
   #socket: /var/run/mysqld/mysqld.sock
@@ -21,8 +21,8 @@ development:
   adapter: mysql2
   encoding: utf8
   database: flight_scraping
-  username: root
-  password: 
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   host: 127.0.0.1
   port: 3306
 
@@ -30,8 +30,8 @@ test:
   adapter: mysql2
   encoding: utf8
   database: flight_scraping
-  username: root
-  password: 
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   host: 127.0.0.1
   port: 3306
   #socket: /var/run/mysqld/mysqld.sock
@@ -39,8 +39,8 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: flight_scraping
-  username: root
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   password: 
   host: 127.0.0.1
   port: 3306

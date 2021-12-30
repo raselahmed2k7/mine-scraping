@@ -12,47 +12,47 @@
 
 ActiveRecord::Schema.define(version: 2021_12_21_092555) do
 
-  create_table "airlines", force: :cascade do |t|
+  create_table "airlines", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "airports", force: :cascade do |t|
+  create_table "airports", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "departure_dates", force: :cascade do |t|
+  create_table "departure_dates", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.date "departure_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "flights", force: :cascade do |t|
+  create_table "flights", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "code"
     t.float "price"
     t.string "changeable_status"
     t.string "flight_seat"
     t.string "flight_type"
     t.float "flight_type_discount"
-    t.integer "airline_id"
-    t.integer "search_id"
+    t.bigint "airline_id"
+    t.bigint "search_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["airline_id"], name: "index_flights_on_airline_id"
     t.index ["search_id"], name: "index_flights_on_search_id"
   end
 
-  create_table "searches", force: :cascade do |t|
+  create_table "searches", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "search_date"
     t.integer "arrival_airport_id"
     t.string "departure_time_from"
     t.string "departure_time_to"
-    t.integer "departure_date_id"
-    t.integer "airport_id"
+    t.bigint "departure_date_id"
+    t.bigint "airport_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["airport_id"], name: "index_searches_on_airport_id"
