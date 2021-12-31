@@ -1,8 +1,6 @@
-# TODO: Update it to read from .env file
 set :environment, :development
-set :path, '/var/www/flight-scrapping/current'
+env :PATH, ENV['PATH']
 set :shared_path, '/var/www/flight-scrapping/shared'
-
 set :output, {:error => "log/cronerror.log", :standard => "log/cron.log"}
 # ENV['DISPLAY'] = ":0"
 # Use this file to easily define all of your cron jobs.
