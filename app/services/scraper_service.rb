@@ -1,6 +1,7 @@
 class ScraperService
   WAIT = Selenium::WebDriver::Wait.new(timeout: 20) # Maximum wait to find out search results html
-  WEB_DRIVER = Selenium::WebDriver.for :firefox
+  options = Selenium::WebDriver::Firefox::Options.new(args: ['-headless'])
+  WEB_DRIVER = Selenium::WebDriver.for(:firefox, options: options)
   MAX_CALL = 3
   MAX_RETRY = 40
 
@@ -51,6 +52,7 @@ class ScraperService
           ticket_searched_flights = prepare_search_data(search_data.id)
           Flight.transaction do
             Flight.create(ticket_searched_flights) # Save flights
+            puts "Flights scraped successfully and saved to DB..."
           end
         rescue Exception => e
           retries += 1

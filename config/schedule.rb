@@ -21,6 +21,12 @@ set :output, {:error => "log/cronerror.log", :standard => "log/cron.log"}
 # end
 
 # Learn more: http://github.com/javan/whenever
-every :day, at: '12:20am' do
-  runner "FlightScraperJob.perform_later"
+
+every :day, at: '12:20am', roles: [:batch] do
+  begin
+    rake 'scraper:scrap_flights'
+  rescue StandardError => e
+    Rails.logger.error("aborted rake task")
+    raise e
+  end
 end
