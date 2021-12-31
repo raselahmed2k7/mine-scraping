@@ -3,7 +3,7 @@ lock "~> 3.11.2"
 
 set :application, "flight-scrapping"
 set :repo_url, "git@github.com:bitfountain/flight-scraping.git"
-
+set :linked_files, %w(config/database.yml)
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 

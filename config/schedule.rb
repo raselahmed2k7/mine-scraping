@@ -1,7 +1,6 @@
 set :environment, :production
-set :path, '/var/www/flight-scrapper/current'
-set :shared_path, '/var/www/flight-scrapper/shared'
-set :output, "#{shared_path}/log/cron.log"
+set :path, '/var/www/flight-scrapping/current'
+set :shared_path, '/var/www/flight-scrapping/shared'
 
 set :output, {:error => "log/cronerror.log", :standard => "log/cron.log"}
 # ENV['DISPLAY'] = ":0"
