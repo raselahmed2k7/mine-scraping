@@ -1,4 +1,8 @@
 set :environment, :production
+set :path, '/var/www/flight-scrapper/current'
+set :shared_path, '/var/www/flight-scrapper/shared'
+set :output, "#{shared_path}/log/cron.log"
+
 set :output, {:error => "log/cronerror.log", :standard => "log/cron.log"}
 # ENV['DISPLAY'] = ":0"
 # Use this file to easily define all of your cron jobs.
