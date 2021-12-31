@@ -22,6 +22,6 @@
   cp config/database.sample.yml config/database.yml
   ```
   start `rails server`
-  go to `rails console` and call the active job by executing `FlightScraperJob.perform_later`
+  go to `rails console` and call the active job by executing `rake scraper:scrap_flights`
 
 That's it. It will then start scraping.
