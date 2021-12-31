@@ -1,4 +1,5 @@
-set :environment, :production
+# TODO: Update it to read from .env file
+set :environment, :development
 set :path, '/var/www/flight-scrapping/current'
 set :shared_path, '/var/www/flight-scrapping/shared'
 
@@ -25,7 +26,7 @@ set :output, {:error => "log/cronerror.log", :standard => "log/cron.log"}
 
 # Learn more: http://github.com/javan/whenever
 
-every :day, at: '12:20am', roles: [:batch] do
+every :day, at: '12:20am' do
   begin
     rake 'scraper:scrap_flights'
   rescue StandardError => e
